@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency</title>
+    {% assets "scss_all" %}
+        <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+    {% endassets %}
+</head>
+<body>
+    <header>
+        <div class="logo">Agency</div>
+        <nav class="nav">
+            {% if current_user.is_authenticated %}
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="#" class="button"><p>Вход</p></a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="button"><p>Регистрация</p></a>
+                </li>
+            </ul>
+            {% else %}
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="#"><p>Админ. панель</p></a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="button"><p>Выход</p></a>
+                </li>
+            </ul>
+            {% endif %}
+        </nav>
+    </header>
+
+    {% block main %}
+    {% endblock %}
+
+    <footer>
+        <p>© AGENCY. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,100 @@
+// mulish font
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
+
+//  MIXINS
+
+@mixin padding() {
+    padding: 20px 150px;
+
+    @media screen and (max-width: 1024px){
+        padding: 10px;
+    }
+}
+
+// BASE
+body{
+    position: relative;
+    min-height: 100vh;
+    // for footer
+    padding-bottom: 30px;
+}
+*{
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+
+    font-family: 'Mulish', sans-serif;
+    text-decoration: none;
+}
+ul, li, ol {
+    list-style: none;
+}
+h1 {
+    font-size: 42px;
+}
+h2 {
+    font-size: 32px;
+}
+h3 {
+    font-size: 24px;
+}
+h4 {
+    font-size: 18px;
+}
+p {
+    font-size: 14px;
+}
+
+.button{
+    display: inline-block;
+    color: white;
+    background-color: #3C64B1;
+    padding: 10px 20px;
+    
+}
+
+// HEADER
+
+header {
+    @include padding;
+    background-color: rgba(60, 100, 177, 0.06);;
+
+
+    color: #3C64B1;
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.nav__list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.nav__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// FOOTER
+footer {
+    @include padding;
+
+    color: white;
+
+    background-color: #373F41;
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
