@@ -1,6 +1,51 @@
 {% extends 'base.html' %}
-
 {% block main %}
-    <p>Agency</p>
-{% endblock %}
+<main>
+    <section class="title">
+        <div class="title__text">
+            <h1>МЫ НАЙДЕМ ВАМ ЛУЧШЕЕ РЕШЕНИЕ</h1>
+            <p>Поможем выбрать жилье иt совершить безопасную сделку среди всего разнообразия на рынке.</p>
+            <div class="button-wrapper">
+                <a href="#catalog" class="button">Начать выбор</a>
+            </div>
+        </div>
+        <div class="title__image">
+            <img src="{{ url_for('static', filename='title_image.png') }}" alt="" />
+        </div>
+    </section>
 
+    <section class="catalog" id="catalog">
+        <div class="catalog__title">
+            <h2>СДАВАЕМЫЕ ОБЪЕКТЫ</h2>
+
+            {% if current_user.has_role('a dmin') %}
+            <button class="button_light">Добавить</button>
+            {% endif %}
+
+        </div>
+        <ul class="catalog__list">
+
+            {% for object in objects %}
+            <li class="catalog__item">
+                <a href="{{ url_for('object_view', id=object.id) }}">
+                    <img src="{{ url_for('static', filename=object.image_name) }}" alt="image">
+                </a>
+                <a href="{{ url_for('object_view', id=object.id) }}">
+                    <h4>{{ object.title }}</h4>
+                </a>
+                <p>{{ object.description }}</p>
+
+                {% if current_user.has_role('admin') %}
+                <div class="catalog__item-buttons">
+                    <a href="{{ url_for('edit_object_view', id=object.id) }}" class="button_light">Изменить</a>
+                    <a href="/object/delete/{{object.id}}" class="button_light">Удалить</a>
+                </div>
+                {% endif %}
+
+            </li>
+            {% endfor %}
+        </ul>
+
+    </section>
+</main>
+{% endblock %}

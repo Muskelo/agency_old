@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block main %}
+<main>
+    <form action="{{ url_for("create_object_view", id=object.id) }}" class="object">
+        <div class="object__info-buttons">
+            <div class="object__info">
+                <h3>{{ object.title }}</h3>
+                <input name="title" type="text" placeholder="Новый заголовок">
+
+                <p>{{ object.description }}</p>
+                <textarea name="description" id="" cols="30" rows="10" placeholder="Новое описание"></textarea>
+            </div>
+            <div class="object__buttons">
+                <div class="button-wrapper">
+                    <button class="button" type="submit">Сохранить</button>
+                </div>
+            </div>
+        </div>
+        <div class="object__image">
+            <img src="{{ url_for('static', filename=object.image_name) }}" alt="image">
+        </div>
+    </form>
+</main>
+{% endblock %}

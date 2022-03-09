@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block main %}
+<main>
+    <section class="object">
+        <div class="object__info-buttons">
+
+            <div class="object__info">
+                <h3>{{ object.title }}</h3>
+
+                <p>{{ object.description }}</p>
+            </div>
+            <div class="object__buttons">
+                <div class="button-wrapper">
+                    <button class="button">Подать заявку</button>
+                </div>
+
+                {% if current_user.has_role('admin') %}
+                <div class="button-wrapper">
+                    <a href="{{ url_for('edit_object_view', id=object.id) }}" class="button_light">Изменить</a>
+                    <a href="{{ url_for('delete_object_view', id=object.id) }}" class="button_light">Удалить</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="object__image">
+            <img src="{{ url_for('static', filename=object.image_name) }}" alt="image">
+        </div>
+    </section>
+</main>
+{% endblock %}

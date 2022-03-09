@@ -11,10 +11,16 @@
     }
 }
 
-// BASE
+// BASE TEMPLATE -------------------------------------------->
+
 body{
     position: relative;
     min-height: 100vh;
+
+    // base color
+    color: #373F41;
+    font-size: 14px;
+
     // for footer
     padding-bottom: 30px;
 }
@@ -26,32 +32,58 @@ body{
 
     font-family: 'Mulish', sans-serif;
     text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+
 }
 ul, li, ol {
     list-style: none;
 }
+
+// font sizes
 h1 {
     font-size: 42px;
+    margin: 6px 0;
 }
 h2 {
     font-size: 32px;
+    margin: 6px 0;
 }
 h3 {
     font-size: 24px;
+    margin: 6px 0;
 }
 h4 {
     font-size: 18px;
+    margin: 6px 0;
 }
 p {
-    font-size: 14px;
+    margin: 3px 0;
 }
 
+// img sizes
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+// buttons
+
+.button-wrapper{
+    margin-top: 8px;
+}
 .button{
     display: inline-block;
     color: white;
     background-color: #3C64B1;
     padding: 10px 20px;
-    
+}
+.button_light{
+    display: inline-block;
+    color: #3C64B1;
+    background-color: transparent;
+    border: 2px solid #3C64B1;
+    padding: 8px 18px;
 }
 
 // HEADER
@@ -64,6 +96,7 @@ header {
     color: #3C64B1;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .logo {
     font-size: 24px;
@@ -83,6 +116,7 @@ header {
 }
 
 // FOOTER
+
 footer {
     @include padding;
 
@@ -97,4 +131,161 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+// FORMS WINDOW
+
+.form-wrapper{
+    display: none;
+    
+    &:target{
+        display: flex;
+    }
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 100vw ;
+    height: 100vh;
+
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    align-items: center;
+    justify-content: center;
+
+    .form {
+        background-color: rgb(240, 240, 240);
+        border-radius: 8px;
+        padding: 16px;
+
+        display: flex;
+        flex-direction:column;
+
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .button-wrapper {
+        text-align: center;
+    }
+
+}
+
+// HOME TEMPLATE ------------------------------------------------->
+
+// TITLE
+
+.title{
+    @include padding;
+    background-color: rgba(60, 100, 177, 0.06);;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr;
+    }
+}
+.title__text{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+    @media screen and (max-width: 1024px) {
+        text-align: center;
+
+        p {
+            margin-bottom: 20px;
+        }
+    }
+}
+.title__image {
+    @media screen and (max-width: 1024px) {
+        display: none;
+    }
+}
+
+
+// CATALOG
+
+.catalog {
+    @include padding;
+    margin-top: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.catalog__title{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.catalog__list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+
+
+    @media screen and (max-width: 1200px){
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (max-width: 800px)  {
+        grid-template-columns: 1fr;
+    }
+}
+.catalog__item {
+    text-align: center;
+
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+
+    &-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 16px;
+    }
+}
+
+
+// OBJECT VIEW TEMPLATE ------------------------------------------------> 
+
+// OBJECT
+
+.object{
+    @include padding;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+
+    @media screen and (max-width: 1024px) {
+        display: flex;
+        flex-direction:column-reverse;
+    }
+}
+.object__info-buttons{
+    display: grid;
+    grid-template-rows: 1fr auto;
+
+    input, textarea {
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    @media screen and (max-width: 1024px) {
+        text-align: center;
+
+        p {
+            margin-bottom: 20px;
+        }
+    }
 }

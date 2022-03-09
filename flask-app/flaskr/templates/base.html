@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agency</title>
     {% assets "scss_all" %}
-        <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+    <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
     {% endassets %}
 </head>
+
 <body>
     <header>
-        <div class="logo">Agency</div>
+        <div class="logo"><a href="{{ url_for('home_view') }}">Agency</a></div>
         <nav class="nav">
-            {% if current_user.is_authenticated %}
+            {% if not current_user.is_authenticated %}
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="#" class="button"><p>Вход</p></a>
+                    <a href="#login" class="button">
+                        <p>Вход</p>
+                    </a>
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="button"><p>Регистрация</p></a>
+                    <a href="#register" class="button">
+                        <p>Регистрация</p>
+                    </a>
                 </li>
             </ul>
             {% else %}
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="#"><p>Админ. панель</p></a>
+                    <a href="#">
+                        <p>Админ. панель</p>
+                    </a>
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="button"><p>Выход</p></a>
+                    <a href="#logout" class="button">
+                        <p>Выход</p>
+                    </a>
                 </li>
             </ul>
             {% endif %}
@@ -40,5 +50,25 @@
     <footer>
         <p>© AGENCY. All rights reserved.</p>
     </footer>
+
+    <!-- forms -->
+    <div class="form-wrapper" class="login" id="login">
+        <form class="form" action="{{ url_for('login_view') }}">
+            <h3>Вход</h3>
+            <label for="login">
+                <p>Логин</p>
+                <input type="text" name="login">
+            </label>
+            <label for="password">
+                <p>Пароль</p>
+                <input type="password" name="password">
+            </label>
+            <div class="button-wrapper">
+                <button type="submit" class="button">Войти</button>
+                <a href="#" class="button_light">Отмена</a>
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>
