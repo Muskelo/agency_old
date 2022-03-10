@@ -122,8 +122,10 @@
         flex-direction: column; }
         .form-wrapper h3 {
           text-align: center; }
-          .form-wrapper .button-wrapper {
-            text-align: center; }
+          .form-wrapper input {
+            width: 100%; }
+            .form-wrapper .button-wrapper {
+              text-align: center; }
 
   .title {
     padding: 20px 150px;

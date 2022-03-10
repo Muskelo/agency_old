@@ -55,9 +55,9 @@
     <div class="form-wrapper" class="login" id="login">
         <form class="form" action="{{ url_for('login_view') }}">
             <h3>Вход</h3>
-            <label for="login">
-                <p>Логин</p>
-                <input type="text" name="login">
+            <label for="number">
+                <p>Номер телефона</p>
+                <input type="text" name="number">
             </label>
             <label for="password">
                 <p>Пароль</p>
@@ -65,6 +65,56 @@
             </label>
             <div class="button-wrapper">
                 <button type="submit" class="button">Войти</button>
+                <a href="#" class="button_light">Отмена</a>
+            </div>
+        </form>
+    </div>
+    <div class="form-wrapper register" id="register">
+        <form class="form" action="{{ url_for('register_view') }}">
+            <h3>Регистрация</h3>
+            <label for="number">
+                <p>Номер телефона</p>
+                <input type="text" name="number">
+            </label>
+            <label for="name">
+                <p>Имя</p>
+                <input type="text" name="name">
+            </label>
+            <label for="password">
+                <p>Пароль</p>
+                <input type="password" name="password">
+            </label>
+            <label for="password-verify">
+                <p>Пароль</p>
+                <input type="password" name="password-verify">
+            </label>
+            <div class="button-wrapper">
+                <button type="submit" class="button">Зарегистрироваться</button>
+                <a href="#" class="button_light">Отмена</a>
+            </div>
+        </form>
+    </div>
+    <div class="form-wrapper create_object" id="create_object">
+        <form class="form" action="{{ url_for('create_object_view') }}">
+            <h3>Добавление объекта</h3>
+            <label for="title">
+                <p>Заголовок</p>
+                <input type="text" name="title">
+            </label>
+            <label for="rooms">
+                <p>Комнат</p>
+                <input type="number" name="rooms">
+            </label>
+            <label for="size">
+                <p>Площадь</p>
+                <input type="number" name="size">
+            </label>
+            <label for="description">
+                <p>Описание</p>
+                <textarea  name="description"></textarea>
+            </label>
+            <div class="button-wrapper">
+                <button type="submit" class="button">Добавить</button>
                 <a href="#" class="button_light">Отмена</a>
             </div>
         </form>

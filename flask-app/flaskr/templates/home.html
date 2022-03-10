@@ -18,8 +18,8 @@
         <div class="catalog__title">
             <h2>СДАВАЕМЫЕ ОБЪЕКТЫ</h2>
 
-            {% if current_user.has_role('a dmin') %}
-            <button class="button_light">Добавить</button>
+            {% if current_user.has_role('admin') %}
+            <a href="#create_object" class="button_light">Добавить</a>
             {% endif %}
 
         </div>
