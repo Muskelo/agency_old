@@ -225,3 +225,43 @@
           .object__info-buttons p {
             margin-bottom: 20px;   }
 }
+
+  .requests {
+    padding: 20px 150px; }
+    @media screen and (max-width: 1024px) {
+      .requests {
+        padding: 10px;   }
+}
+
+  .table-desktop {
+    width: 100%;
+    display: grid;
+    grid-template-columns: fit-content(30%) auto 1fr auto auto;
+    text-align: center; }
+    @media screen and (max-width: 1024px) {
+      .table-desktop {
+        display: none;   }
+}
+      .table-desktop .column {
+        border-bottom: 1px solid #ededed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 100%; }
+        .table-desktop .column_title {
+          color: darkgray;
+          border-bottom: none; }
+          .table-desktop .column_name {
+            justify-content: left; }
+            .table-desktop .column_name.column_title {
+              padding-left: 16px; }
+
+  .table-mobile {
+    width: 100%;
+    display: none; }
+    @media screen and (max-width: 1024px) {
+      .table-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;   }
+}

@@ -11,7 +11,7 @@
             </div>
             <div class="object__buttons">
                 <div class="button-wrapper">
-                    <button class="button">Подать заявку</button>
+                    <a href="{{ url_for('create_request_view') }}" class="button">Подать заявку</a>
                 </div>
 
                 {% if current_user.has_role('admin') %}

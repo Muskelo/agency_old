@@ -30,12 +30,12 @@
             {% else %}
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="#">
+                    <a href="{{ url_for('admin_view') }}">
                         <p>Админ. панель</p>
                     </a>
                 </li>
                 <li class="nav__item">
-                    <a href="#logout" class="button">
+                    <a href="{{ url_for('logout_view') }}" class="button">
                         <p>Выход</p>
                     </a>
                 </li>

@@ -137,7 +137,7 @@ footer {
 
 .form-wrapper{
     display: none;
-    
+
     &:target{
         display: flex;
     }
@@ -290,3 +290,53 @@ footer {
         }
     }
 }
+
+// ADMIN VIEW TEMPLATE ------------------------------------------------> 
+.requests {
+    @include padding;
+}
+.table-desktop {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: fit-content(30%) auto 1fr auto auto;
+
+    text-align: center;
+
+    @media screen and (max-width: 1024px){
+        display: none; 
+    }
+
+    .column {
+        border-bottom: 1px solid #ededed;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 100%;
+    }
+    .column_title{
+        color: darkgray;
+        border-bottom: none;
+    }
+
+    .column_name {
+        justify-content: left;
+
+        &.column_title {
+            padding-left: 16px;
+        }
+    }
+}
+.table-mobile {
+    width: 100%;
+    display: none; 
+
+    @media screen and (max-width: 1024px){
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+}
+
