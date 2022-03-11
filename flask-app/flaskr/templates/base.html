@@ -14,7 +14,7 @@
     <header>
         <div class="logo"><a href="{{ url_for('home_view') }}">Agency</a></div>
         <nav class="nav">
-            {% if not current_user.is_authenticated %}
+            {% if not g.user.is_authenticated %}
             <ul class="nav__list">
                 <li class="nav__item">
                     <a href="#login" class="button">
@@ -52,8 +52,8 @@
     </footer>
 
     <!-- forms -->
-    <div class="form-wrapper" class="login" id="login">
-        <form class="form" action="{{ url_for('login_view') }}">
+    <div class="form-wrapper"class="login" id="login">
+        <form class="form" action="{{ url_for('login_view') }}" method="post" >
             <h3>Вход</h3>
             <label for="number">
                 <p>Номер телефона</p>
@@ -70,7 +70,7 @@
         </form>
     </div>
     <div class="form-wrapper register" id="register">
-        <form class="form" action="{{ url_for('register_view') }}">
+        <form class="form" method='post' action="{{ url_for('register_view') }}">
             <h3>Регистрация</h3>
             <label for="number">
                 <p>Номер телефона</p>
@@ -84,9 +84,9 @@
                 <p>Пароль</p>
                 <input type="password" name="password">
             </label>
-            <label for="password-verify">
+            <label for="password_verify">
                 <p>Пароль</p>
-                <input type="password" name="password-verify">
+                <input type="password" name="password_verify">
             </label>
             <div class="button-wrapper">
                 <button type="submit" class="button">Зарегистрироваться</button>

@@ -1,15 +1,16 @@
 import random
 
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, g
 
 from flaskr.utils import generate_random_text
+from flaskr.resources import UserResource
 
 class User():
     def __init__(self) -> None:
         self.id = random.randint(1, 1000)
         self.name = generate_random_text(1,3)
         self.number = random.randint(10**11,10**12-1)
-        self.is_authenticated = True
+        self.is_authenticated = False
         self.role = "admin"
 
     def has_role(self, role):
@@ -30,7 +31,6 @@ class Request():
         self.object = Object()
 
 def add_object_views(app):
-
     @app.route("/object/<id>")
     def object_view(id):
 
@@ -55,24 +55,28 @@ def add_object_views(app):
         return redirect(url_for('object_view', id=id))
 
 def add_auth_views(app):
-
-    @app.route("/login")
+    @app.route("/login",methods=["POST"])
     def login_view():
+
+        UserResource.login(request.form)
 
         return redirect(request.referrer or "home_view")
 
     @app.route("/logout")
     def logout_view():
 
+        UserResource.logout()
+
         return redirect(url_for("home_view"))
 
-    @app.route("/register")
+    @app.route("/register", methods=["POST"])
     def register_view():
+
+        user = UserResource.create(request.form)
 
         return redirect(request.referrer or "home_view")
 
 def add_request_views(app):
-
     @app.route("/request/create/")
     def create_request_view():
 
@@ -84,11 +88,10 @@ def add_request_views(app):
         return redirect(request.referrer)
 
 def add_views(app):
-
     @app.route("/")
     def home_view():
 
-        return render_template("home.html", current_user=User(), objects=[Object() for i in range(20)])
+        return render_template("home.html", current_user=g.user, objects=[Object() for i in range(20)])
 
     @app.route("/admin/")
     def admin_view():
