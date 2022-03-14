@@ -31,6 +31,6 @@ class RequestModels(db.Model):
         backref=db.backref('requests', lazy='dynamic'))
     object_id = db.Column(db.Integer, db.ForeignKey('object.id'))
     object = db.relationship('ObjectModel',
-        backref=db.backref('requests', lazy='dynamic'))
+        backref=db.backref('requests', lazy='dynamic',cascade="all,delete",))
 
     __table_args__ = (db.UniqueConstraint('user_id', 'object_id', name='_user_object_'),)
