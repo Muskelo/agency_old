@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Agency</title>
+
     {% assets "scss_all" %}
     <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
     {% endassets %}
@@ -12,8 +14,12 @@
 
 <body>
     <header>
-        <div class="logo"><a href="{{ url_for('home_view') }}">Agency</a></div>
+        <div class="logo">
+            <a href="{{ url_for('home_view') }}">Agency</a>
+        </div>
+
         <nav class="nav">
+
             {% if not g.user.is_authenticated %}
             <ul class="nav__list">
                 <li class="nav__item">
@@ -41,6 +47,7 @@
                 </li>
             </ul>
             {% endif %}
+
         </nav>
     </header>
 
@@ -51,18 +58,30 @@
         <p>© AGENCY. All rights reserved.</p>
     </footer>
 
+    <!-- notifs -->
+    <ul class="notif">
+        {% for category, message in get_flashed_messages(with_categories=True) %}
+        <div class="notif__item notif__item_{{category}}">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+    </ul>
+
+
     <!-- forms -->
-    <div class="form-wrapper"class="login" id="login">
-        <form class="form" action="{{ url_for('login_view') }}" method="post" >
+    <div class="form-wrapper" class="login" id="login">
+        <form class="form" action="{{ url_for('login_view') }}" method="post">
             <h3>Вход</h3>
+
             <label for="number">
                 <p>Номер телефона</p>
-                <input type="text" name="number">
+                <input type="text" name="number" pattern="[0-9- ]{10,}" required>
             </label>
             <label for="password">
                 <p>Пароль</p>
-                <input type="password" name="password">
+                <input type="password" name="password" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,}" required>
             </label>
+
             <div class="button-wrapper">
                 <button type="submit" class="button">Войти</button>
                 <a href="#" class="button_light">Отмена</a>
@@ -72,22 +91,24 @@
     <div class="form-wrapper register" id="register">
         <form class="form" method='post' action="{{ url_for('register_view') }}">
             <h3>Регистрация</h3>
+
             <label for="number">
                 <p>Номер телефона</p>
-                <input type="text" name="number">
+                <input type="text" name="number"pattern="[0-9- ]{10,}" required>
             </label>
             <label for="name">
                 <p>Имя</p>
-                <input type="text" name="name">
+                <input type="text" name="name" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,}" required>
             </label>
             <label for="password">
                 <p>Пароль</p>
-                <input type="password" name="password">
+                <input type="password" name="password" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,}" required>
             </label>
             <label for="password_verify">
                 <p>Пароль</p>
-                <input type="password" name="password_verify">
+                <input type="password" name="password_verify" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,}" required>
             </label>
+
             <div class="button-wrapper">
                 <button type="submit" class="button">Зарегистрироваться</button>
                 <a href="#" class="button_light">Отмена</a>
@@ -95,24 +116,30 @@
         </form>
     </div>
     <div class="form-wrapper create_object" id="create_object">
-        <form class="form" action="{{ url_for('create_object_view') }}">
+        <form class="form" action="{{ url_for('create_object_view') }}" enctype=multipart/form-data method="post">
             <h3>Добавление объекта</h3>
+
             <label for="title">
                 <p>Заголовок</p>
-                <input type="text" name="title">
+                <input type="text" name="title" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,}" required>
             </label>
             <label for="rooms">
                 <p>Комнат</p>
-                <input type="number" name="rooms">
+                <input type="number" name="rooms" pattern="[0-9]+" required>
             </label>
             <label for="size">
                 <p>Площадь</p>
-                <input type="number" name="size">
+                <input type="number" name="size" pattern="[0-9]+" required>
             </label>
             <label for="description">
                 <p>Описание</p>
-                <textarea  name="description"></textarea>
+                <textarea name="description" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,}" required></textarea>
             </label>
+            <label for="image">
+                <p>Изображение</p>
+                <input type="file" name="image"accept=".jpg, .jpeg, .png, .webp, .gif"></input>
+            </label>
+
             <div class="button-wrapper">
                 <button type="submit" class="button">Добавить</button>
                 <a href="#" class="button_light">Отмена</a>

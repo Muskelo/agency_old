@@ -1,23 +1,36 @@
 {% extends 'base.html' %}
 {% block main %}
 <main>
-    <form action="{{ url_for("edit_object_view", id=object.id) }}" method="post" class="object">
+    <form action="{{ url_for("edit_object_view", id=object.id) }}" method="post" enctype="multipart/form-data"
+        class="object">
         <div class="object__info-buttons">
             <div class="object__info">
                 <h3>{{ object.title }}</h3>
                 <input name="title" type="text" placeholder="Новый заголовок">
 
-                <p>{{ object.description }}</p>
+                <p>Комнат: {{ object.rooms }}</p>
+                <input name="rooms" placeholder="Новое кол-во комнат"></input>
+
+                <p>Площадь: {{ object.size }} м^2</p>
+                <input name="size" placeholder="Новая площадь"></input>
+
+                <p>Описание: {{ object.description }}</p>
                 <textarea name="description" id="" cols="30" rows="10" placeholder="Новое описание"></textarea>
             </div>
+
             <div class="object__buttons">
                 <div class="button-wrapper">
                     <button class="button" type="submit">Сохранить</button>
                 </div>
             </div>
         </div>
+
         <div class="object__image">
-            <img src="{{ url_for('static', filename=object.image_name) }}" alt="image">
+            <img src="{{ url_for('static', filename='images/' + object.image_name) }}" alt="image">
+
+            <label for="image">Новое изображение
+                <input type="file" name="image">
+            </label>
         </div>
     </form>
 </main>

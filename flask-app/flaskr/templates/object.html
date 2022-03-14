@@ -3,18 +3,29 @@
 <main>
     <section class="object">
         <div class="object__info-buttons">
-
             <div class="object__info">
                 <h3>{{ object.title }}</h3>
-
-                <p>{{ object.description }}</p>
+                <p>Комнат: {{ object.rooms }}</p>
+                <p>Площадь: {{ object.size }} м^2</p>
+                <p>Описание: {{ object.description }}</p>
             </div>
-            <div class="object__buttons">
-                <div class="button-wrapper">
-                    <a href="{{ url_for('create_request_view') }}" class="button">Подать заявку</a>
-                </div>
 
-                {% if current_user.has_role('admin') %}
+            <div class="object__buttons">
+
+                <p>{{g.user.requested_objects}}</p>
+
+                {% if not object.id in g.user.requested_objects_id %}
+
+                <div class="button-wrapper">
+                    <a href="{{ url_for('create_request_view', user_id=g.user.id, object_id=object.id) }}" class="button">Подать заявку</a>
+                </div>
+                {% else %}
+                <div class="button-wrapper">
+                    <button href="#" class="button_light">Подана</button>
+                </div>
+                {% endif %}
+
+                {% if g.user.has_role('admin') %}
                 <div class="button-wrapper">
                     <a href="{{ url_for('edit_object_view', id=object.id) }}" class="button_light">Изменить</a>
                     <a href="{{ url_for('delete_object_view', id=object.id) }}" class="button_light">Удалить</a>
@@ -23,7 +34,7 @@
             </div>
         </div>
         <div class="object__image">
-            <img src="{{ url_for('static', filename=object.image_name) }}" alt="image">
+            <img src="{{ url_for('static', filename='images/' + object.image_name) }}" alt="image">
         </div>
     </section>
 </main>

@@ -20,9 +20,7 @@ def generate_random_text(min_len:int = 3, max_len:int = 24) -> str:
 
     return random_text
     
-
-
-def save_in_db(add):
+def save_in_db(add=[]):
     """ Try save changes in db,
     db: database to save
     add: itrable list on objects to save

@@ -6,4 +6,5 @@ class Configuration(object):
 
     # SQLALCHEMY_DATABASE_URI="mysql+mysqlconnector://user:password@127.0.0.1:3306/db"
     SQLALCHEMY_TRACK_MODIFICATION = True
+    IMAGE_PATH = 'flaskr/static/images'
 
