@@ -18,6 +18,7 @@ class ObjectModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     rooms = db.Column(db.Integer)
+    price = db.Column(db.String(255))
     size = db.Column(db.Integer)
     description = db.Column(db.Text)
     image_name = db.Column(db.String(255))
