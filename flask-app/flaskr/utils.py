@@ -20,7 +20,7 @@ def generate_random_text(min_len:int = 3, max_len:int = 24) -> str:
 
     return random_text
     
-def save_in_db(add=[]):
+def save_in_db(add=[], del_=[]):
     """ Try save changes in db,
     db: database to save
     add: itrable list on objects to save
@@ -28,6 +28,9 @@ def save_in_db(add=[]):
     try:
         for item in add:
             db.session.add(item)
+
+        for item in del_:
+            db.session.delete(item)
 
         db.session.commit()
     except SQLAlchemyError as e:

@@ -51,11 +51,9 @@ class BaseResource():
 
     @classmethod 
     def delete_(cls, id):
-        object_ = cls.query.filter_by(id=id)
+        object_ = cls.query.filter_by(id=id).first()
 
-        object_.delete()
-
-        save_in_db()
+        save_in_db(del_=[object_])
 
 class AnonymUser(object):
     is_authenticated = False

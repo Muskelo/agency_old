@@ -21,6 +21,7 @@ class ObjectModel(db.Model):
     size = db.Column(db.Integer)
     description = db.Column(db.Text)
     image_name = db.Column(db.String(255))
+    requests = db.relationship("RequestModels", cascade="all, delete")
 
 class RequestModels(db.Model):
     __tablename__ = 'request'
@@ -30,7 +31,6 @@ class RequestModels(db.Model):
     user = db.relationship('UserModel',
         backref=db.backref('requests', lazy='dynamic'))
     object_id = db.Column(db.Integer, db.ForeignKey('object.id'))
-    object = db.relationship('ObjectModel',
-        backref=db.backref('requests', lazy='dynamic',cascade="all,delete",))
+    object = db.relationship('ObjectModel')
 
     __table_args__ = (db.UniqueConstraint('user_id', 'object_id', name='_user_object_'),)
