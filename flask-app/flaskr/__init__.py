@@ -9,12 +9,6 @@ from flaskr.resources import UserResource
 from flaskr.views import add_views
 from flaskr.db import db
 
-def create_image_folder(app):
-    try:
-        if not os.path.exists(app.config['IMAGE_PATH']):
-            os.makedirs(app.config['IMAGE_PATH'])
-    except:
-        pass
 
 def add_assets(app):
     assets = Environment(app)
@@ -34,7 +28,14 @@ def create_app():
     add_views(app)
 
     app.before_request(UserResource.load_user)
-    app.before_first_request(create_image_folder)
+
+    @app.before_first_request
+    def create_image_folder():
+        try:
+            if not os.path.exists(app.config['IMAGE_PATH']):
+                os.makedirs(app.config['IMAGE_PATH'])
+        except:
+            pass
 
     return app
 
