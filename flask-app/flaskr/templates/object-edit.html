@@ -6,16 +6,16 @@
         <div class="object__info-buttons">
             <div class="object__info">
                 <h3>{{ object.title }}</h3>
-                <input name="title" type="text" placeholder="Новый заголовок" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,144}" >
+                <input name="title" maxlength="144"type="text" placeholder="Новый заголовок" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,144}" >
 
                 <p>Цена: {{ object.price }}</p>
-                <input name="price" placeholder="Новая цена" pattern="[0-9]{1,20}" ></input>
+                <input name="price" maxlength="20"placeholder="Новая цена" pattern="[0-9]{1,20}" ></input>
 
                 <p>Комнат: {{ object.rooms }}</p>
-                <input name="rooms" placeholder="Новое кол-во комнат"pattern="[0-9]{1,3}"></input>
+                <input name="rooms" maxlength="3" placeholder="Новое кол-во комнат"pattern="[0-9]{1,3}"></input>
 
                 <p>Площадь: {{ object.size }} м^2</p>
-                <input name="size" placeholder="Новая площадь"pattern="[0-9]{1,5}"></input>
+                <input name="size" maxlength="5"placeholder="Новая площадь"pattern="[0-9]{1,5}"></input>
 
                 <p>Описание: {{ object.description }}</p>
                 <textarea name="description" id="" cols="30" rows="10" placeholder="Новое описание" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,}"></textarea>

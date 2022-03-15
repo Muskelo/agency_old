@@ -78,11 +78,11 @@
 
             <label for="number">
                 <p>Номер телефона</p>
-                <input type="text" name="number" pattern="[0-9- ]{10,14}" required>
+                <input type="text" name="number" pattern="[0-9- ]{10,14}" maxlength="15"required>
             </label>
             <label for="password">
                 <p>Пароль</p>
-                <input type="password" name="password" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,24}" required>
+                <input type="password" name="password" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,24}" maxlength="24"required>
             </label>
 
             <div class="button-wrapper">
@@ -97,19 +97,19 @@
 
             <label for="number">
                 <p>Номер телефона</p>
-                <input type="text" name="number"pattern="[0-9- ]{10, 15}" required>
+                <input type="text" name="number"pattern="[0-9- ]{10, 15}" maxlength="15"required>
             </label>
             <label for="name">
                 <p>Имя</p>
-                <input type="text" name="name" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4, 144}" required>
+                <input type="text" maxlength="144"name="name" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4, 144}" required>
             </label>
             <label for="password">
                 <p>Пароль</p>
-                <input type="password" name="password" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,24}" required>
+                <input type="password" name="password" pmaxlength="24"attern="[0-9a-zA-Zа-яА-Я_.- ]{4,24}" required>
             </label>
             <label for="password_verify">
                 <p>Пароль</p>
-                <input type="password" name="password_verify" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,24}" required>
+                <input type="password" name="password_verify" maxlength="24"pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,24}" required>
             </label>
 
             <div class="button-wrapper">
@@ -124,19 +124,19 @@
 
             <label for="title">
                 <p>Заголовок</p>
-                <input type="text" name="title" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,144}" required>
+                <input type="text" name="title" maxlength="144" pattern="[0-9a-zA-Zа-яА-Я_.- ]{4,144}" required>
             </label>
             <label for="price">
                 <p>Цена</p>
-                <input type="number" name="price" pattern="[0-9]{1,20}" required>
+                <input type="number" name="price"maxlength="20" pattern="[0-9]{1,20}" required>
             </label>
             <label for="rooms">
                 <p>Комнат</p>
-                <input type="number" name="rooms" pattern="[0-9]{1,3}" required>
+                <input type="number" name="rooms" maxlength="3"pattern="[0-9]{1,3}" required>
             </label>
             <label for="size">
                 <p>Площадь</p>
-                <input type="number" name="size" pattern="[0-9]{1,5}" required>
+                <input type="number" name="size" maxlength="5"pattern="[0-9]{1,5}" required>
             </label>
             <label for="description">
                 <p>Описание</p>
