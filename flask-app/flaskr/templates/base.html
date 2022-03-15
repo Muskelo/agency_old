@@ -35,11 +35,14 @@
             </ul>
             {% else %}
             <ul class="nav__list">
+
+                {% if g.user.has_role('admin') %}
                 <li class="nav__item">
                     <a href="{{ url_for('admin_view') }}">
                         <p>Админ. панель</p>
                     </a>
                 </li>
+                {% endif %}
                 <li class="nav__item">
                     <a href="{{ url_for('logout_view') }}" class="button">
                         <p>Выход</p>
