@@ -73,7 +73,8 @@
   .logo {
     font-size: 24px;
     font-weight: 700;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    height: 60px; }
 
     .nav__list {
       display: flex;
@@ -218,7 +219,7 @@
   .catalog__item {
     text-align: center;
     display: grid;
-    grid-template-rows: minmax(100px, 200px) auto auto 1fr; }
+    grid-template-rows: auto auto auto 1fr; }
     .catalog__item-buttons {
       display: flex;
       justify-content: center;

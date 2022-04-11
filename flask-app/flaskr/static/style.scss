@@ -102,6 +102,7 @@ header {
     font-size: 24px;
     font-weight: 700;
     text-transform: uppercase;
+    height: 60px;
 }
 .nav__list{
     display: flex;
@@ -280,7 +281,7 @@ footer {
     text-align: center;
 
     display: grid;
-    grid-template-rows: minmax(100px, 200px) auto auto 1fr;
+    grid-template-rows: auto auto auto 1fr;
 
     &-buttons {
         display: flex;

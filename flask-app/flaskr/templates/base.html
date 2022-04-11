@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Agency</title>
+    <title>LANGUAGE</title>
 
     {% assets "scss_all" %}
     <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
@@ -15,7 +15,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="{{ url_for('home_view') }}">Agency</a>
+            <a href="{{ url_for('home_view') }}"><img src="{{ url_for('static', filename='language.png')}}" alt=""></a>
         </div>
 
         <nav class="nav">
@@ -58,7 +58,7 @@
     {% endblock %}
 
     <footer>
-        <p>© AGENCY. All rights reserved.</p>
+        <p>© LANGUAGE. All rights reserved. <a href="https://vk.ru">Мы в вконтакте.</a> <a href="https://youtube.com">Наш youtube канал.</a></p>
     </footer>
 
     <!-- notifs -->
@@ -118,9 +118,10 @@
             </div>
         </form>
     </div>
+
     <div class="form-wrapper create_object" id="create_object">
         <form class="form" action="{{ url_for('create_object_view') }}" enctype=multipart/form-data method="post">
-            <h3>Добавление объекта</h3>
+            <h3>Добавление курса</h3>
 
             <label for="title">
                 <p>Заголовок</p>
@@ -131,11 +132,11 @@
                 <input type="number" name="price"maxlength="20" pattern="[0-9]{1,20}" required>
             </label>
             <label for="rooms">
-                <p>Комнат</p>
+                <p>Учеников</p>
                 <input type="number" name="rooms" maxlength="3"pattern="[0-9]{1,3}" required>
             </label>
             <label for="size">
-                <p>Площадь</p>
+                <p>Уроков</p>
                 <input type="number" name="size" maxlength="5"pattern="[0-9]{1,5}" required>
             </label>
             <label for="description">

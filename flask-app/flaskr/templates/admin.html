@@ -2,7 +2,7 @@
 {% block main %}
 <main>
     <section class="requests">
-        <h2>Заявки</h2>
+        <h2>Записи на курс</h2>
 
         <!-- Делаем таблицу через display:grid потому что проще и красивее -->
         <div class="table-desktop">
@@ -11,7 +11,7 @@
             <p class="column column_name column_title">Имя</p>
             <p class="column column_title">Номер телефона</p>
             <p class="column column_title"></p>
-            <p class="column column_title">Объект</p>
+            <p class="column column_title">Курс</p>
             <p class="column column_title">Удалить</p>
 
             {% for request in requests %}
@@ -25,8 +25,6 @@
                     class="button_light">Удалить</a></p>
             {% endfor %}
         </div>
-
-        <!-- Делаем таблицу через display:grid потому что проще и красивее -->
         <div class="table-mobile">
             {% for request in requests %}
             <div class="row">
@@ -40,6 +38,56 @@
             {% endfor %}
 
         </div>
+    </section>
+    <section class="requests">
+        <h2>Пользователи</h2>
+        <!-- Делаем таблицу через display:grid потому что проще и красивее -->
+        <div class="table-desktop">
+
+            <!-- название столбцова -->
+            <p class="column column_name column_title">Имя</p>
+            <p class="column column_title">Номер телефона</p>
+            <p class="column column_title">Задать новую роль</p>
+            <p class="column column_title">Текущая роль</p>
+            <p class="column column_title">Удалить</p>
+
+            {% for user in users %}
+            <!-- new-row start -->
+            <p class="column column_name">{{ user.name }}</p>
+            <p class="column">{{ user.number }}</p>
+            <form class="column" action="{{ url_for('edit_user_view', id=user.id) }}" method="post"
+                enctype="multipart/form-data" class="object">
+                <input type="text" name="role" placeholder="Задать новую роль">
+                <input type="submit" value="Сохранить">
+            </form>
+
+            <p class="column">{{ user.role }}</p>
+            <p class="column column_last">
+                <a href="{{ url_for('delete_user_view', id=user.id) }}" class="button_light">Удалить</a>
+            </p>
+            {% endfor %}
+        </div>
+        <div class="table-mobile">
+            {% for user in users %}
+            <div class="row">
+                <p class="column column_name">Имя: {{ user.name }}</p>
+                <p class="column">Номер телефона: {{ user.number }}</p>
+                <p class="column">Номер телефона: {{ user.number }}</p>
+
+                <form class="column" action="{{ url_for('edit_user_view', id=user.id) }}" method="post"
+                    enctype="multipart/form-data" class="object">
+                    <input type="text" name="role" placeholder="Задать новую роль">
+                    <input type="submit" value="Сохранить">
+                </form>
+
+                <p class="column">{{ user.role }}</p>
+                <p class="column column_last">
+                    <a href="{{ url_for('delete_user_view', id=user.id) }}" class="button_light">Удалить</a>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+
     </section>
 </main>
 {% endblock %}

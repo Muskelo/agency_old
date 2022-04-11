@@ -96,6 +96,22 @@ def add_auth_views(app):
 
         return redirect(request.referrer or "home_view")
 
+    @app.route("/users/delete/<id>")
+    @role_required('admin')
+    def delete_user_view(id):
+        UserResource.delete_(id)
+
+        return redirect(request.referrer)
+
+    @app.route("/users/edit/<id>", methods=['POST'])
+    @role_required('admin')
+    def edit_user_view(id):
+        UserResource.update_(id, request.form)
+
+        return redirect(request.referrer)
+
+
+
 def add_request_views(app):
     @app.route("/request/create/")
     @login_required
@@ -126,7 +142,7 @@ def add_views(app):
     @app.route("/admin/")
     @role_required('admin')
     def admin_view():
-        return render_template("admin.html", requests=RequestResource.get_all_())
+        return render_template("admin.html", requests=RequestResource.get_all_(), users=UserResource.get_all_())
 
     add_object_views(app)
     add_auth_views(app)

@@ -6,8 +6,8 @@
             <div class="object__info">
                 <h3>{{ object.title }}</h3>
                 <p>Цена: {{ object.price }}</p>
-                <p>Комнат: {{ object.rooms }}</p>
-                <p>Площадь: {{ object.size }} м^2</p>
+                <p>Учеников: {{ object.rooms }}</p>
+                <p>Уроков: {{ object.size }}</p>
                 <p>Описание: {{ object.description }}</p>
             </div>
 
@@ -18,11 +18,11 @@
                 {% if not object.id in g.user.requested_objects_id %}
 
                 <div class="button-wrapper">
-                    <a href="{{ url_for('create_request_view', user_id=g.user.id, object_id=object.id) }}" class="button">Подать заявку</a>
+                    <a href="{{ url_for('create_request_view', user_id=g.user.id, object_id=object.id) }}" class="button">Записаться на курс</a>
                 </div>
                 {% else %}
                 <div class="button-wrapper">
-                    <button href="#" class="button_light">Подана</button>
+                    <button href="#" class="button_light">Вы записаны</button>
                 </div>
                 {% endif %}
 
